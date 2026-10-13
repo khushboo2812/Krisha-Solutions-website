@@ -271,7 +271,8 @@ if (!$sent) {
         encode_header($subject),
         $body,
         implode("\r\n", $headers),
-        '-f' . $from
+        // Bounces (the envelope sender) go to the inbox, so a rejected email is never lost silently.
+        '-f' . header_safe((string) ($config['bounceTo'] ?: $config['to']))
     );
 }
 

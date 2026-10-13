@@ -372,6 +372,7 @@ const formConfig = {
   enabled: baseVars.formEnabled || baseVars.formTestPage,
   to: config.form.recipient,
   from: config.form.fromAddress,
+  bounceTo: config.form.bounceTo || config.form.recipient,
   siteName: config.siteName,
   // Secret: comes from the RESEND_API_KEY GitHub secret at deploy time, never from the repository.
   resendKey: process.env.RESEND_API_KEY || '',

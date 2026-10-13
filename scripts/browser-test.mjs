@@ -8,6 +8,7 @@
 // end-to-end. Emails "sent" by the form are written to a local file instead.
 
 import { spawn } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { chmod, mkdir, readFile, rm, readdir, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
@@ -27,6 +28,7 @@ const PAGES = [
   '/services/website-ecommerce-development/', '/services/it-hardware-equipment/',
   '/krishasure/', '/about/', '/contact/', '/contact/thank-you/', '/privacy-policy/', '/404.html',
 ];
+if (existsSync(join(DIST, 'contact/form-test/index.html'))) PAGES.push('/contact/form-test/');
 const VIEWPORTS = { phone: { width: 375, height: 812 }, desktop: { width: 1366, height: 900 } };
 
 let failures = 0;
@@ -137,10 +139,13 @@ try {
   if (!formEnabled) {
     console.log('Enquiry form: skipped (form is switched off; build with KS_FORM_TEST=1 to test it)');
   } else {
-    console.log('Enquiry form');
+    // Before the form goes public it only appears on the private test page.
+    const contactHtml = await readFile(join(DIST, 'contact/index.html'), 'utf8');
+    const FORM_PAGE = contactHtml.includes('data-enquiry-form') ? '/contact/' : '/contact/form-test/';
+    console.log(`Enquiry form (on ${FORM_PAGE})`);
     const context = await browser.newContext({ viewport: VIEWPORTS.desktop });
     const page = await context.newPage();
-    await page.goto(BASE + '/contact/?service=krishasure', { waitUntil: 'networkidle' });
+    await page.goto(BASE + FORM_PAGE + '?service=krishasure', { waitUntil: 'networkidle' });
     check((await page.inputValue('#f-service')) === 'krishasure', 'service is pre-selected from the link');
 
     await page.click('[data-submit]');
@@ -182,7 +187,7 @@ try {
     check(header.status() === 422, 'email header injection attempt is rejected');
 
     // A real submission through the page.
-    await page.goto(BASE + '/contact/', { waitUntil: 'networkidle' });
+    await page.goto(BASE + FORM_PAGE, { waitUntil: 'networkidle' });
     await page.fill('#f-name', 'Jane Wanjiku');
     await page.fill('#f-company', 'Example Accountants Ltd');
     await page.fill('#f-email', 'jane@example.co.ke');
@@ -197,7 +202,8 @@ try {
     await page.waitForURL('**/contact/thank-you/', { timeout: 10000 });
     check(true, 'valid enquiry redirects to the thank-you page');
     const mail = await readFile(MAIL_LOG, 'utf8').catch(() => '');
-    check(mail.includes('To: test-inbox@example.com') || mail.includes('test-inbox@example.com'), 'email is addressed to the configured inbox');
+    const inbox = (await readFile(join(DIST, 'api/contact-config.php'), 'utf8')).match(/'to' => '([^']+)'/)[1];
+    check(mail.includes(`To: ${inbox}`), `email is addressed to the configured inbox (${inbox})`);
     check(mail.includes('Reply-To: jane@example.co.ke'), 'Reply-To is the visitor’s email address');
     check(mail.includes('Example Accountants Ltd') && mail.includes('Wi-Fi keeps dropping'), 'email contains the enquiry details');
     check(mail.includes('Managed IT services and technical support'), 'email shows the selected service');

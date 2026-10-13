@@ -142,6 +142,8 @@ function organisationSchema(vars) {
     '@id': `${config.siteUrl}/#organization`,
     name: config.siteName,
     slogan: config.tagline,
+    foundingDate: '2025-04',
+    founder: { '@type': 'Person', name: 'Khushboo Ruparel' },
     url: `${config.siteUrl}/`,
     description:
       'IT services, technical support, infrastructure management, software solutions and IT consulting for businesses in Nairobi and across Kenya.',
@@ -277,6 +279,8 @@ const baseVars = {
   phoneDisplay: contact.phoneDisplay || contact.phone,
   location: `${contact.locality}, ${contact.country}`,
   formEnabled: config.form.enabled && Boolean(config.form.recipient),
+  // Private test page (/contact/form-test/) for checking delivery before the form goes public.
+  formTestPage: Boolean(config.form.testPage && config.form.recipient),
   cssVersion: await fileHash(join(SRC, 'static/assets/css/styles.css')),
   jsVersion: await fileHash(join(SRC, 'static/assets/js/main.js')),
   analyticsHead: analyticsHead(),
@@ -296,7 +300,10 @@ const baseVars = {
   lastUpdated: today,
 };
 
-const pageFiles = (await walk(join(SRC, 'pages'))).filter((f) => f.endsWith('.html')).sort();
+const pageFiles = (await walk(join(SRC, 'pages')))
+  .filter((f) => f.endsWith('.html'))
+  .filter((f) => baseVars.formTestPage || !f.includes(`${sep}form-test${sep}`))
+  .sort();
 const sitemapUrls = [];
 
 for (const file of pageFiles) {
@@ -321,7 +328,8 @@ for (const file of pageFiles) {
     canonical,
     pageTitle: meta.title,
     pageDescription: meta.description,
-    robots: meta.noindex ? 'noindex, follow' : 'index, follow',
+    robots: meta.noindex ? 'noindex, nofollow' : 'index, follow',
+    formEnabled: meta.forceForm ? baseVars.formTestPage : baseVars.formEnabled,
     bodyClass: meta.bodyClass || '',
     bodyData: meta.conversion ? 'data-conversion="lead"' : '',
     breadcrumbHtml: crumbs ? breadcrumbHtml(crumbs) : '',
@@ -361,7 +369,7 @@ await writeFile(
 
 // Settings for the enquiry form handler (dist/api/contact.php).
 const formConfig = {
-  enabled: baseVars.formEnabled,
+  enabled: baseVars.formEnabled || baseVars.formTestPage,
   to: config.form.recipient,
   from: config.form.fromAddress,
   siteName: config.siteName,

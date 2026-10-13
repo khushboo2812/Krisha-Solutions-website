@@ -15,6 +15,7 @@
   },
   "form": {
     "enabled": false,
+    "testPage": true,
     "recipient": "khushboo@krishasolutions.net",
     "fromAddress": "website@krishasolutions.net"
   },

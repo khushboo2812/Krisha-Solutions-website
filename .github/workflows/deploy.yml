@@ -17,13 +17,24 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Upload site/ via FTP
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build site
+        run: node build.mjs
+
+      - name: Check site (links, SEO tags, structure)
+        run: node scripts/check.mjs
+
+      - name: Upload dist/ via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
-          local-dir: ./site/
+          local-dir: ./dist/
           # Folder on the server, relative to where the FTP account logs in.
           server-dir: ${{ vars.FTP_SERVER_DIR || './' }}

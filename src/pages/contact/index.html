@@ -1,0 +1,45 @@
+---
+{
+  "title": "Contact Krisha Solutions | IT Support in Nairobi, Kenya",
+  "description": "Contact Krisha Solutions about managed IT support, networking, cloud and backup or business software. WhatsApp us or send an enquiry. Nairobi, Kenya.",
+  "breadcrumb": [["Contact Us", "/contact/"]],
+  "organisationSchema": true,
+  "priority": "0.9"
+}
+---
+<section class="page-hero">
+  <div class="container">
+    {{{breadcrumbHtml}}}
+    <p class="eyebrow">Contact us</p>
+    <h1>Contact Krisha Solutions</h1>
+    <p class="lead">Tell us about your business and your IT needs. Whether something needs fixing or you are planning ahead, we&rsquo;ll talk it through with you.</p>
+    <div class="btn-row">
+      <a class="btn btn--whatsapp btn--lg" href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chat on WhatsApp</a>
+      {{#formEnabled}}<a class="btn btn--ghost-light btn--lg" href="#enquiry">Send an Enquiry</a>{{/formEnabled}}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Contact options and enquiry form">
+  <div class="container contact-layout">
+    <div class="contact-aside">
+      <h2>Ways to reach us</h2>
+      {{> contact-options}}
+
+      <h2 class="contact-aside__next">What happens next</h2>
+      <ol class="next-steps">
+        <li>We read your message and look at what you need.</li>
+        <li>We get back to you to discuss your requirements in more detail.</li>
+        <li>We suggest practical next steps for your business.</li>
+      </ol>
+    </div>
+
+    <div class="form-card" id="enquiry">
+      {{#formEnabled}}
+      <h2>Send an enquiry</h2>
+      <p>Share a few details and we&rsquo;ll be in touch to discuss your IT needs.</p>
+      {{/formEnabled}}
+      {{> enquiry-form}}
+    </div>
+  </div>
+</section>

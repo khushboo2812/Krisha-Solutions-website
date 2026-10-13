@@ -1,0 +1,37 @@
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Krisha Solutions home">{{{brandMark}}}</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#i-close"/></svg>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main" data-nav>
+      <ul class="nav-list">
+        <li class="nav-item has-sub {{servicesActive}}" data-sub>
+          <button class="nav-link nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-services" data-sub-toggle>
+            Services <svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="nav-sub" id="nav-services">
+            <ul class="nav-sub__list">
+              <li><a href="/services/managed-it-services/" data-nav-link><svg class="icon" aria-hidden="true"><use href="#i-support"/></svg><span><strong>Managed IT Services</strong><small>Ongoing support and maintenance</small></span></a></li>
+              <li><a href="/services/it-infrastructure-networking/" data-nav-link><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg><span><strong>IT Infrastructure &amp; Networking</strong><small>Networks, Wi-Fi and servers</small></span></a></li>
+              <li><a href="/services/cloud-hosting-backup/" data-nav-link><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg><span><strong>Cloud, Hosting &amp; Backup</strong><small>Cloud services and monitored backups</small></span></a></li>
+              <li><a href="/services/software-it-consulting/" data-nav-link><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span><strong>Software &amp; IT Consulting</strong><small>Business software, planning and projects</small></span></a></li>
+              <li><a href="/services/website-ecommerce-development/" data-nav-link><svg class="icon" aria-hidden="true"><use href="#i-web"/></svg><span><strong>Websites &amp; E-commerce</strong><small>Business websites and online shops</small></span></a></li>
+              <li><a href="/services/it-hardware-equipment/" data-nav-link><svg class="icon" aria-hidden="true"><use href="#i-hardware"/></svg><span><strong>IT Hardware &amp; Equipment</strong><small>Advice, sourcing and supply</small></span></a></li>
+            </ul>
+            <a class="nav-sub__all" href="/services/" data-nav-link>View all services <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/krishasure/" data-nav-link>KrishaSure</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about/" data-nav-link>About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact/" data-nav-link>Contact</a></li>
+      </ul>
+      <a class="btn btn--primary nav-cta" href="/contact/">Discuss Your IT Needs</a>
+    </nav>
+  </div>
+</header>

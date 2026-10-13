@@ -1,0 +1,20 @@
+name: Check site
+
+# Builds and checks the site on pull requests, without deploying.
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build site
+        run: node build.mjs
+      - name: Check site (links, SEO tags, structure)
+        run: node scripts/check.mjs
+      - name: Check PHP syntax
+        run: php -l src/static/api/contact.php && php -l dist/api/contact-config.php

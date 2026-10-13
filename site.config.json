@@ -1,0 +1,26 @@
+{
+  "siteName": "Krisha Solutions",
+  "siteUrl": "https://krishasolutions.net",
+  "tagline": "All Your IT Needs Under One Roof",
+  "contact": {
+    "whatsappNumber": "254181846711",
+    "whatsappDisplay": "+254 181 846711",
+    "whatsappMessage": "Hello Krisha Solutions, I would like to discuss our IT needs.",
+    "email": "",
+    "phone": "",
+    "phoneDisplay": "",
+    "locality": "Nairobi",
+    "country": "Kenya",
+    "countryCode": "KE"
+  },
+  "form": {
+    "enabled": false,
+    "recipient": "",
+    "fromAddress": "website@krishasolutions.net"
+  },
+  "analytics": {
+    "ga4Id": "",
+    "googleAdsId": "",
+    "adsLeadConversionLabel": ""
+  }
+}

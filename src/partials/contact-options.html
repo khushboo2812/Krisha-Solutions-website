@@ -1,0 +1,37 @@
+<ul class="contact-options">
+  <li class="contact-option contact-option--whatsapp">
+    <svg class="icon icon--lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+    <div>
+      <h3>WhatsApp</h3>
+      <p>The quickest way to reach us. Send a message and tell us what you need.</p>
+      <a class="contact-option__link" href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp">{{whatsappDisplay}}</a>
+    </div>
+  </li>
+  {{#email}}
+  <li class="contact-option">
+    <svg class="icon icon--lg" aria-hidden="true"><use href="#i-mail"/></svg>
+    <div>
+      <h3>Email</h3>
+      <p>Send us the details and we&rsquo;ll get back to you.</p>
+      <a class="contact-option__link" href="{{emailHref}}" data-track="email">{{email}}</a>
+    </div>
+  </li>
+  {{/email}}
+  {{#phone}}
+  <li class="contact-option">
+    <svg class="icon icon--lg" aria-hidden="true"><use href="#i-phone"/></svg>
+    <div>
+      <h3>Phone</h3>
+      <p>Call us to talk through your requirements.</p>
+      <a class="contact-option__link" href="{{phoneHref}}" data-track="phone">{{phoneDisplay}}</a>
+    </div>
+  </li>
+  {{/phone}}
+  <li class="contact-option">
+    <svg class="icon icon--lg" aria-hidden="true"><use href="#i-pin"/></svg>
+    <div>
+      <h3>Location</h3>
+      <p>Based in {{location}}, working with businesses in Nairobi and elsewhere in Kenya.</p>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,4 @@
+# Only the form handler may be requested directly.
+<FilesMatch "^(?!contact\.php$).*">
+  Require all denied
+</FilesMatch>

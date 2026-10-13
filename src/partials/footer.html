@@ -1,0 +1,50 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="footer-logo" href="/" aria-label="Krisha Solutions home">{{{brandMark}}}</a>
+      <p class="footer-tagline">{{tagline}}</p>
+      <p>IT services, technical support, infrastructure, software and IT consulting for businesses in Nairobi and across Kenya.</p>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-title">Services</h2>
+      <ul>
+        <li><a href="/services/managed-it-services/">Managed IT Services</a></li>
+        <li><a href="/services/it-infrastructure-networking/">IT Infrastructure &amp; Networking</a></li>
+        <li><a href="/services/cloud-hosting-backup/">Cloud, Hosting &amp; Backup</a></li>
+        <li><a href="/services/software-it-consulting/">Software &amp; IT Consulting</a></li>
+        <li><a href="/services/website-ecommerce-development/">Websites &amp; E-commerce</a></li>
+        <li><a href="/services/it-hardware-equipment/">IT Hardware &amp; Equipment</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-title">Company</h2>
+      <ul>
+        <li><a href="/about/">About Us</a></li>
+        <li><a href="/krishasure/">KrishaSure</a></li>
+        <li><a href="/contact/">Contact Us</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-title">Get in touch</h2>
+      <ul class="footer-contact">
+        <li><a href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp {{whatsappDisplay}}</a></li>
+        {{#email}}<li><a href="{{emailHref}}" data-track="email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{email}}</a></li>{{/email}}
+        {{#phone}}<li><a href="{{phoneHref}}" data-track="phone"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{phoneDisplay}}</a></li>{{/phone}}
+        <li><span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>{{location}}</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {{year}} Krisha Solutions. All rights reserved.</p>
+    <p><a href="/privacy-policy/">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<a class="wa-float" href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp">
+  <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  <span class="wa-float__label">Chat on WhatsApp</span>
+</a>

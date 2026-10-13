@@ -1,0 +1,103 @@
+{{#formEnabled}}
+<form class="enquiry-form" action="/api/contact.php" method="post" data-enquiry-form data-whatsapp="{{whatsappChatUrl}}">
+  <div class="form-status" role="alert" aria-live="assertive" data-form-status hidden></div>
+
+  <div class="form-grid">
+    <div class="field">
+      <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="f-name-error">
+      <p class="field-error" id="f-name-error" data-error-for="name"></p>
+    </div>
+    <div class="field">
+      <label for="f-company">Company name <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-company" name="company" type="text" autocomplete="organization" required maxlength="150" aria-describedby="f-company-error">
+      <p class="field-error" id="f-company-error" data-error-for="company"></p>
+    </div>
+    <div class="field">
+      <label for="f-email">Business email <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="f-email-error">
+      <p class="field-error" id="f-email-error" data-error-for="email"></p>
+    </div>
+    <div class="field">
+      <label for="f-phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-phone" name="phone" type="tel" autocomplete="tel" required maxlength="20" placeholder="e.g. +254 7XX XXX XXX" aria-describedby="f-phone-error">
+      <p class="field-error" id="f-phone-error" data-error-for="phone"></p>
+    </div>
+    <div class="field">
+      <label for="f-business-type">Type of business</label>
+      <select id="f-business-type" name="business_type" aria-describedby="f-business_type-error">
+        <option value="">Select (optional)</option>
+        <option value="accounting">Accounting or audit firm</option>
+        <option value="law">Law firm</option>
+        <option value="professional-services">Consulting or professional services</option>
+        <option value="logistics">Logistics or distribution</option>
+        <option value="engineering">Engineering or construction</option>
+        <option value="ngo">NGO</option>
+        <option value="other">Other</option>
+      </select>
+      <p class="field-error" id="f-business_type-error" data-error-for="business_type"></p>
+    </div>
+    <div class="field">
+      <label for="f-employees">Number of employees or users</label>
+      <select id="f-employees" name="employees" aria-describedby="f-employees-error">
+        <option value="">Select (optional)</option>
+        <option value="1-19">1 to 19</option>
+        <option value="20-50">20 to 50</option>
+        <option value="51-100">51 to 100</option>
+        <option value="101-150">101 to 150</option>
+        <option value="150+">More than 150</option>
+      </select>
+      <p class="field-error" id="f-employees-error" data-error-for="employees"></p>
+    </div>
+    <div class="field field--full">
+      <label for="f-service">Service required <span class="req" aria-hidden="true">*</span></label>
+      <select id="f-service" name="service" required aria-describedby="f-service-error">
+        <option value="">Select a service</option>
+        <option value="managed-it">Managed IT services and technical support</option>
+        <option value="infrastructure">IT infrastructure and networking</option>
+        <option value="cloud">Cloud services, hosting and backup</option>
+        <option value="software">Software implementation and customisation</option>
+        <option value="consulting">IT consulting and project management</option>
+        <option value="web">Website and e-commerce development</option>
+        <option value="hardware">IT hardware and equipment</option>
+        <option value="krishasure">KrishaSure helpdesk</option>
+        <option value="other">Something else, or not sure yet</option>
+      </select>
+      <p class="field-error" id="f-service-error" data-error-for="service"></p>
+    </div>
+    <div class="field field--full">
+      <label for="f-message">Briefly describe your IT issue or requirement <span class="req" aria-hidden="true">*</span></label>
+      <textarea id="f-message" name="message" rows="5" required minlength="10" maxlength="3000" aria-describedby="f-message-error"></textarea>
+      <p class="field-error" id="f-message-error" data-error-for="message"></p>
+    </div>
+    <div class="field field--full field--check">
+      <input id="f-consent" name="consent" type="checkbox" value="yes" required aria-describedby="f-consent-error">
+      <label for="f-consent">I agree that Krisha Solutions may use these details to respond to my enquiry, as described in the <a href="/privacy-policy/">Privacy Policy</a>. <span class="req" aria-hidden="true">*</span></label>
+      <p class="field-error" id="f-consent-error" data-error-for="consent"></p>
+    </div>
+  </div>
+
+  <!-- Spam protection: real visitors never see or fill in this field. -->
+  <div class="hp-field" aria-hidden="true">
+    <label for="f-website">Leave this field empty</label>
+    <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+  </div>
+  <input type="hidden" name="started" value="" data-form-started>
+
+  <div class="form-actions">
+    <button class="btn btn--primary btn--lg" type="submit" data-submit>
+      <span data-submit-label>Send Enquiry</span>
+    </button>
+    <p class="form-note"><span class="req" aria-hidden="true">*</span> Required fields</p>
+  </div>
+</form>
+{{/formEnabled}}
+{{^formEnabled}}
+<div class="form-unavailable">
+  <svg class="icon icon--lg" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  <h3>Message us on WhatsApp</h3>
+  <p>Our online enquiry form is being set up. In the meantime, the quickest way to reach us is WhatsApp. Tell us your name, your company and a little about what you need.</p>
+  <a class="btn btn--whatsapp btn--lg" href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Chat on WhatsApp</a>
+  {{#email}}<p class="form-unavailable__alt">Or email us at <a href="{{emailHref}}" data-track="email">{{email}}</a>.</p>{{/email}}
+</div>
+{{/formEnabled}}

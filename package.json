@@ -1,0 +1,12 @@
+{
+  "name": "krisha-solutions-website",
+  "private": true,
+  "description": "Website for krishasolutions.net",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs && node scripts/check.mjs",
+    "test": "KS_FORM_TEST=1 node build.mjs && node scripts/check.mjs && node scripts/browser-test.mjs",
+    "preview": "node build.mjs && php -S 127.0.0.1:8080 -t dist"
+  }
+}

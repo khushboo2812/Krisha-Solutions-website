@@ -48,7 +48,11 @@ const descriptions = new Map();
 for (const [url, html] of pages) {
   const where = (msg) => `${url}: ${msg}`;
 
-  if (/\{\{|\}\}/.test(html)) errors.push(where('unrendered template tag'));
+  const withoutJson = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
+  if (/\{\{|\}\}/.test(withoutJson)) errors.push(where('unrendered template tag'));
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try { JSON.parse(m[1]); } catch { errors.push(where('invalid structured data JSON')); }
+  }
   if (!/<html lang="/.test(html)) errors.push(where('missing lang attribute'));
 
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1];

@@ -22,7 +22,7 @@ const SERVICES = [
     'consulting' => 'IT consulting and project management',
     'web' => 'Website and e-commerce development',
     'hardware' => 'IT hardware and equipment',
-    'krishasure' => 'KrishaSure helpdesk',
+    'krishasure' => 'KrishaSure (demo or pilot)',
     'other' => 'Something else, or not sure yet',
 ];
 

@@ -39,9 +39,8 @@
         <g class="diagram-hub">
           <circle class="ring ring--outer" cx="260" cy="220" r="86"/>
           <circle class="ring" cx="260" cy="220" r="66"/>
-          <circle cx="260" cy="220" r="52" fill="#2d1e84"/>
-          <use href="#feather-eye" x="243" y="178" width="34" height="44"/>
-          <text x="260" y="246" text-anchor="middle">Supported</text>
+          <circle cx="260" cy="220" r="52" fill="#ffffff"/>
+          <image href="/assets/img/feather.png" x="222" y="182" width="76" height="76"/>
         </g>
 
         <g class="diagram-node">
@@ -281,23 +280,22 @@
   </div>
 </section>
 
-<section class="section section--dark" aria-labelledby="krishasure-title">
+<section class="section section--dark ks-dark" aria-labelledby="krishasure-title">
   <div class="container product-band">
     <div data-reveal>
-      <span class="product-badge">A product from Krisha Solutions</span>
-      <h2 id="krishasure-title">KrishaSure: structured helpdesk ticketing</h2>
-      <p class="lead">KrishaSure brings support requests into one structured workflow, so each request is recorded, assigned, tracked through to resolution and available for reporting.</p>
+      {{> ks-lockup}}
+      <h2 id="krishasure-title">Support for every client you manage, in one place</h2>
+      <p class="lead">KrishaSure is our support-ticketing platform for IT service providers, MSPs and support teams: AI-assisted tickets, automatic SLA tracking and one dashboard for every client you support.</p>
       <div class="btn-row">
         <a class="btn btn--accent" href="/krishasure/">Discover KrishaSure</a>
+        <a class="btn btn--ghost-light" href="/krishasure/#book-demo">Book a demo</a>
       </div>
     </div>
-    <ol class="workflow" data-reveal aria-label="The KrishaSure workflow">
-      <li><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg>Ticket</li>
-      <li><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>Assignment</li>
-      <li><svg class="icon" aria-hidden="true"><use href="#i-status"/></svg>Status tracking</li>
-      <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Resolution</li>
-      <li><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Reporting</li>
-    </ol>
+    <ul class="workflow ks-flow" data-reveal aria-label="KrishaSure highlights">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg>AI-assisted tickets</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-status"/></svg>Automatic SLA tracking, in business hours</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>One dashboard for every client</li>
+    </ul>
   </div>
 </section>
 

@@ -238,10 +238,24 @@ if (logo) {
   const dims = size ? ` width="${size.width}" height="${size.height}"` : '';
   brandMark = `<img class="brand__logo" src="${logoUrl}" alt="${escapeHtml(config.siteName)}"${dims}>`;
 } else {
-  brandMark = partials['wordmark'];
+  brandMark = `<span class="brand__text">${escapeHtml(config.siteName)}</span>`;
 }
 
 const today = new Date().toISOString().slice(0, 10);
+
+// KrishaSure logo and screenshots: dropped into src/static/assets/img/krishasure/
+// with these names, they appear on the site automatically. Missing ones are skipped.
+const KS_DIR = join(SRC, 'static/assets/img/krishasure');
+async function findImage(dir, base) {
+  for (const ext of ['svg', 'png', 'webp', 'jpg']) {
+    const file = join(dir, `${base}.${ext}`);
+    if (await exists(file)) return `/assets/img/krishasure/${base}.${ext}`;
+  }
+  return '';
+}
+const ksLogo = await findImage(KS_DIR, 'logo');
+const ksShots = {};
+for (const name of ['dashboard', 'ai_assistant', 'client_portal']) ksShots[name] = await findImage(KS_DIR, name);
 
 const baseVars = {
   siteName: config.siteName,
@@ -268,6 +282,10 @@ const baseVars = {
   }),
   logoUrl,
   brandMark,
+  ksLogo,
+  ksShots,
+  ksDemoWhatsappUrl: `${whatsappUrl}?text=${encodeURIComponent('Hello Khushboo, I would like to book a KrishaSure demo.')}`,
+  ksDemoEmailHref: contact.email ? `mailto:${contact.email}?subject=${encodeURIComponent('KrishaSure demo')}` : '',
   lastUpdated: today,
 };
 
@@ -288,6 +306,7 @@ for (const file of pageFiles) {
   if (meta.organisationSchema) schemas.push(organisationSchema(baseVars));
   if (crumbs) schemas.push(breadcrumbSchema(crumbs));
   if (meta.service) schemas.push(serviceSchema(meta, canonical));
+  if (meta.schema) schemas.push(...[].concat(meta.schema).map((extra) => ({ '@context': 'https://schema.org', ...extra })));
 
   const vars = {
     ...baseVars,

@@ -81,6 +81,25 @@ Until a logo file is added, the site shows a text version of the logo in the bra
 To use the real logo, add it as **`src/static/assets/img/logo.svg`** (best) or **`logo.png`**
 (transparent background, at least 400px wide). It will be used in the header and footer automatically.
 
+## KrishaSure images
+
+The KrishaSure page (`/krishasure/`) picks up images from `src/static/assets/img/krishasure/`
+automatically. Use these file names (svg, png, webp or jpg):
+
+| File | Where it appears |
+|------|------------------|
+| `logo.*` | The KrishaSure logo, used as-is (currently `logo.webp`, converted from the supplied PDF) |
+| `dashboard.*` | Screenshot in the KrishaSure hero (replaces the large logo there) |
+| `ai_assistant.*` | Screenshot in the AI assistance section |
+| `client_portal.*` | Screenshot under "How it works for an MSP" |
+
+Missing screenshots are simply left out, so the page never shows empty placeholders.
+
+**KrishaSure copy rules:** only describe features that are built. Not built, so never claim:
+WhatsApp or SMS alerts, Microsoft / Office 365 sign-in, bulk user import, internal-only notes,
+built-in ERP integration, per-client reports in the dashboard, a mobile app, or any uptime,
+security or certification promise. Don't name customers or name the AI provider ("an AI assistant").
+
 ## Enquiry form
 
 The form posts to `/api/contact.php`, which validates it, applies spam protection

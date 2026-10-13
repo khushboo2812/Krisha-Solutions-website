@@ -1,129 +1,341 @@
 ---
 {
-  "title": "KrishaSure Helpdesk & Ticketing | Krisha Solutions",
-  "description": "KrishaSure is a helpdesk and ticketing product from Krisha Solutions that organises support requests: tickets, assignment, tracking, resolution, reporting.",
+  "title": "KrishaSure: Support Ticketing for MSPs & IT Teams | Kenya",
+  "description": "KrishaSure, powered by Krisha Solutions: AI-assisted tickets, automatic SLA tracking and one dashboard for every client you support. From KES 500 per user.",
   "breadcrumb": [["KrishaSure", "/krishasure/"]],
-  "priority": "0.9"
+  "bodyClass": "page-krishasure",
+  "priority": "0.9",
+  "schema": {
+    "@type": "SoftwareApplication",
+    "name": "KrishaSure",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://krishasolutions.net/krishasure/",
+    "description": "Support-ticketing platform for IT service providers, MSPs, software and ERP providers, and internal IT and support teams: AI-assisted tickets, automatic SLA tracking and one dashboard for every client.",
+    "publisher": { "@id": "https://krishasolutions.net/#organization" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "KES", "lowPrice": "500", "highPrice": "750", "offerCount": "4" }
+  }
 }
 ---
-<!--
-  KrishaSure product page.
-  Keep claims limited to what has been confirmed. As the product develops,
-  add sections below (marked "Future section") rather than changing the
-  confirmed description of the workflow.
--->
-<section class="page-hero">
-  <div class="container">
-    {{{breadcrumbHtml}}}
-    <span class="product-badge">A product from Krisha Solutions</span>
-    <h1>KrishaSure</h1>
-    <p class="lead"><strong>Structured ticketing for support requests.</strong> KrishaSure helps organisations handle support requests in an organised way: every request becomes a ticket that is assigned, tracked, resolved and available for reporting.</p>
-    <div class="btn-row">
-      <a class="btn btn--accent btn--lg" href="/contact/?service=krishasure">Ask About KrishaSure</a>
-      <a class="btn btn--ghost-light btn--lg" href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp">WhatsApp Us</a>
+<section class="page-hero ks-hero">
+  <div class="container ks-hero__grid">
+    <div>
+      {{{breadcrumbHtml}}}
+      <div class="ks-hero__lockup">{{> ks-lockup}}</div>
+      <h1>Support for every client you manage, in one place</h1>
+      <p class="lead">AI-assisted tickets, automatic SLA tracking and one dashboard for every client you support.</p>
+      <div class="btn-row">
+        <a class="btn btn--accent btn--lg" href="#book-demo">Book a demo</a>
+        <a class="btn btn--ghost-light btn--lg" href="https://app.krishasure.io">Log in</a>
+      </div>
+      <p class="ks-audience">Built for IT service providers and MSPs who run support for several clients, software and ERP providers, and internal IT and support teams.</p>
     </div>
+    {{#ksShots.dashboard}}
+    <figure class="ks-shot ks-shot--hero">
+      <img src="{{ksShots.dashboard}}" alt="The KrishaSure dashboard">
+    </figure>
+    {{/ksShots.dashboard}}
+    {{^ksShots.dashboard}}{{#ksLogo}}
+    <div class="ks-hero__brand">
+      <img src="{{ksLogo}}" alt="" width="480" height="331">
+      <p>Powered by Krisha Solutions</p>
+    </div>
+    {{/ksLogo}}{{/ksShots.dashboard}}
   </div>
 </section>
 
-<section class="section" aria-labelledby="why-title">
-  <div class="container split split--top">
-    <div data-reveal>
-      <p class="eyebrow">Why it matters</p>
-      <h2 id="why-title">Support requests need structure</h2>
-    </div>
-    <div class="prose" data-reveal>
-      <p class="lead">When requests arrive by phone call, WhatsApp, email and conversations in the corridor, it is easy for them to be forgotten, duplicated or left waiting with nobody clearly responsible.</p>
-      <p>Managers have little visibility of what is open, what has been resolved and where time is going. Staff don&rsquo;t know whether anyone is working on their problem. KrishaSure addresses this by putting every request through the same structured workflow.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section section--dark" aria-labelledby="workflow-title">
+<section class="section" aria-labelledby="problem-title">
   <div class="container">
     <div class="section-head" data-reveal>
-      <p class="eyebrow">How it works</p>
-      <h2 id="workflow-title">One workflow, from request to report</h2>
-      <p class="lead">Every support request follows the same five stages.</p>
+      <p class="eyebrow">The problem</p>
+      <h2 id="problem-title">Supporting many clients shouldn&rsquo;t mean juggling many inboxes</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem" data-reveal>
+        <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        <h3>Requests scattered everywhere</h3>
+        <p>Support requests arrive across several inboxes and spreadsheets, so there&rsquo;s no single picture of what&rsquo;s open.</p>
+      </div>
+      <div class="problem" data-reveal>
+        <svg class="icon" aria-hidden="true"><use href="#i-status"/></svg>
+        <h3>Targets checked too late</h3>
+        <p>Service targets are only looked at after they&rsquo;ve been missed, when it&rsquo;s too late to do anything about them.</p>
+      </div>
+      <div class="problem" data-reveal>
+        <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>
+        <h3>No clear owner</h3>
+        <p>Nobody is clearly responsible for each ticket, so requests wait while everyone assumes someone else has it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="msp-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">How it works for an MSP</p>
+      <h2 id="msp-title">One account. Every client kept separate.</h2>
+      <p class="lead">Run support for all your clients from one place, while each client sees only what belongs to them.</p>
     </div>
     <ol class="steps steps--5">
       <li class="step" data-reveal>
-        <h3>Ticket</h3>
-        <p>Each support request is recorded as a ticket, so nothing depends on someone remembering it.</p>
+        <h3>One account, many organisations</h3>
+        <p>You have one KrishaSure account, and each client is its own organisation inside it.</p>
       </li>
       <li class="step" data-reveal>
-        <h3>Assignment</h3>
-        <p>Tickets are assigned to the right person, so everyone knows who is responsible.</p>
+        <h3>Each client set up their way</h3>
+        <p>Every client gets its own support email address, business hours and service targets (SLAs). Clients on a support contract also get contracted hours with a running balance.</p>
       </li>
       <li class="step" data-reveal>
-        <h3>Status tracking</h3>
-        <p>Each ticket shows where the request stands, so progress is visible rather than assumed.</p>
+        <h3>Clients raise and follow tickets</h3>
+        <p>Clients email their support address or log in to raise and follow tickets, and only ever see their own.</p>
       </li>
       <li class="step" data-reveal>
-        <h3>Resolution</h3>
-        <p>Requests are worked through to resolution, and the outcome is recorded on the ticket.</p>
+        <h3>One shared queue</h3>
+        <p>Your team works from a single shared queue across all clients.</p>
       </li>
       <li class="step" data-reveal>
-        <h3>Reporting</h3>
-        <p>Ticket records support reporting, giving you a clearer view of support activity over time.</p>
+        <h3>Suppliers, limited</h3>
+        <p>Outside suppliers can be given access to just their own category, and nothing else.</p>
       </li>
     </ol>
+    {{#ksShots.client_portal}}
+    <figure class="ks-shot" data-reveal>
+      <img src="{{ksShots.client_portal}}" alt="A client's view of their tickets in KrishaSure" loading="lazy">
+    </figure>
+    {{/ksShots.client_portal}}
   </div>
 </section>
 
-<section class="section" aria-labelledby="value-title">
+<section class="section" aria-labelledby="automation-title">
   <div class="container">
     <div class="section-head" data-reveal>
-      <p class="eyebrow">The value</p>
-      <h2 id="value-title">What a structured helpdesk gives your organisation</h2>
+      <p class="eyebrow">Automation</p>
+      <h2 id="automation-title">The routine work happens on its own</h2>
+      <p class="lead">KrishaSure routes, times, escalates and follows up, so your team can focus on solving problems.</p>
     </div>
-    <div class="grid grid--4">
-      <div class="card" data-reveal>
-        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
-        <h3>Clear ownership</h3>
-        <p>Every request has someone responsible for it.</p>
+    <div class="detail-grid">
+      <div class="detail" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg></span>
+        <div>
+          <h3>Routing</h3>
+          <p>Tickets go to the right person by category skill and priority, using agent levels your company names itself, for example Tier 1 to Tier 3.</p>
+        </div>
       </div>
-      <div class="card" data-reveal>
+      <div class="detail" data-reveal>
         <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-status"/></svg></span>
-        <h3>Visibility</h3>
-        <p>See what is open, what is in progress and what has been resolved.</p>
+        <div>
+          <h3>SLAs</h3>
+          <p>Set targets by priority, category or client. They count business hours only, breaches are flagged, and agents get a heads-up at 75% of the target.</p>
+        </div>
       </div>
+      <div class="detail" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span>
+        <div>
+          <h3>Escalation</h3>
+          <p>A ticket that passes its SLA moves up to the next level with the right skill, and everyone involved is told.</p>
+        </div>
+      </div>
+      <div class="detail" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
+        <div>
+          <h3>Pending</h3>
+          <p>While you wait on the client, the SLA clock pauses and the client is reminded. If they stay silent, the ticket closes itself.</p>
+        </div>
+      </div>
+      <div class="detail detail--wide" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+        <div>
+          <h3>Email</h3>
+          <p>Clients, agents and admins get emails on key events (created, assigned, comments, escalated and resolved), sent from the client&rsquo;s own support address. Replying by email adds to the same ticket, and an email to a support address becomes a ticket.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark ks-dark" aria-labelledby="ai-title">
+  <div class="container split split--top">
+    <div data-reveal>
+      <p class="eyebrow">AI assistance</p>
+      <h2 id="ai-title">An AI assistant that helps before a ticket reaches your team</h2>
+      <p class="lead">When someone raises a ticket, an AI assistant suggests a fix from the description and any screenshots, and answers follow-up questions.</p>
+      <ul class="check-list">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>If it doesn&rsquo;t solve the problem, the whole conversation passes to the agent, so nobody has to start again.</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Emailed tickets are categorised automatically, and an agent can correct the category in one click.</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Each plan has a monthly AI allowance, so usage is capped and costs stay predictable.</li>
+      </ul>
+    </div>
+    {{#ksShots.ai_assistant}}
+    <figure class="ks-shot" data-reveal>
+      <img src="{{ksShots.ai_assistant}}" alt="The KrishaSure AI assistant suggesting a fix for a ticket" loading="lazy">
+    </figure>
+    {{/ksShots.ai_assistant}}
+    {{^ksShots.ai_assistant}}
+    <ol class="workflow ks-flow" data-reveal aria-label="How AI assistance works">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg>Ticket raised</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Fix suggested</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-support"/></svg>Handed to an agent if needed</li>
+    </ol>
+    {{/ksShots.ai_assistant}}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="more-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Everything else</p>
+      <h2 id="more-title">The essentials, built in</h2>
+    </div>
+    <div class="grid grid--3">
       <div class="card" data-reveal>
-        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg></span>
-        <h3>A record of requests</h3>
-        <p>Support requests and their outcomes are kept in one place instead of scattered across messages.</p>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span>
+        <h3>A dashboard for each role</h3>
+        <p>Separate dashboards for administrators, agents, suppliers and clients.</p>
       </div>
       <div class="card" data-reveal>
         <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span>
-        <h3>Better decisions</h3>
-        <p>Reporting on support activity helps you understand recurring issues and plan improvements.</p>
+        <h3>Reports</h3>
+        <p>Agent performance, SLA compliance, ticket volumes and ticket ageing.</p>
+      </div>
+      <div class="card" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg></span>
+        <h3>Full ticket history</h3>
+        <p>Every ticket keeps its complete history, with file attachments.</p>
+      </div>
+      <div class="card" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-consult"/></svg></span>
+        <h3>Categories you control</h3>
+        <p>Set up the ticket categories that match the work you do.</p>
+      </div>
+      <div class="card" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg></span>
+        <h3>Escalation on or off</h3>
+        <p>A company-wide switch turns automatic escalation on or off.</p>
+      </div>
+      <div class="card" data-reveal>
+        <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+        <h3>Email in, email out</h3>
+        <p>Clients can work entirely by email, and every reply lands on the right ticket.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Future section: features (add once confirmed) -->
-<!-- Future section: screenshots (add once available) -->
-<!-- Future section: pricing / plans (add once confirmed) -->
+<section class="section section--alt" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Pricing</p>
+      <h2 id="pricing-title">Simple pricing in Kenyan Shillings</h2>
+      <p class="lead">Priced per active user per month. Users means every active user in your account, including your team, suppliers and client contacts. Deactivated users aren&rsquo;t counted.</p>
+    </div>
 
-<section class="section section--alt" aria-labelledby="interest-title">
+    <div class="pricing" data-reveal>
+      <article class="plan">
+        <h3 class="plan__name">Leopards</h3>
+        <p class="plan__tag">No AI</p>
+        <p class="plan__price"><span class="plan__currency">KES</span> 500</p>
+        <p class="plan__unit">per user / month</p>
+        <ul class="plan__list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Up to 5 users</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No AI requests</li>
+        </ul>
+      </article>
+      <article class="plan">
+        <h3 class="plan__name">Lions</h3>
+        <p class="plan__tag">With AI assistant</p>
+        <p class="plan__price"><span class="plan__currency">KES</span> 750</p>
+        <p class="plan__unit">per user / month</p>
+        <ul class="plan__list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Up to 15 users</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>100 AI requests / month</li>
+        </ul>
+      </article>
+      <article class="plan">
+        <h3 class="plan__name">Buffalos</h3>
+        <p class="plan__tag">With AI assistant</p>
+        <p class="plan__price"><span class="plan__currency">KES</span> 700</p>
+        <p class="plan__unit">per user / month</p>
+        <ul class="plan__list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Up to 25 users</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>400 AI requests / month</li>
+        </ul>
+      </article>
+      <article class="plan">
+        <h3 class="plan__name">Rhinos</h3>
+        <p class="plan__tag">With AI assistant</p>
+        <p class="plan__price"><span class="plan__currency">KES</span> 650</p>
+        <p class="plan__unit">per user / month</p>
+        <ul class="plan__list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Up to 50 users</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>1,200 AI requests / month</li>
+        </ul>
+      </article>
+      <article class="plan plan--enterprise">
+        <h3 class="plan__name">Elephants</h3>
+        <p class="plan__tag">Enterprise</p>
+        <p class="plan__price plan__price--text">Let&rsquo;s talk</p>
+        <p class="plan__unit">pricing discussed separately</p>
+        <ul class="plan__list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>50+ users</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Custom AI allowance</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="pricing-notes" data-reveal>
+      <p><strong>KES 50,000 one-time implementation fee</strong> covers account setup and team training.</p>
+      <p>AI requests cover suggestions, chat and automatic categorisation of emailed tickets. The allowance resets on the 1st of each month.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title">Common questions</h2>
+    </div>
+    <div class="faq" data-reveal>
+      <details>
+        <summary>Can clients see each other&rsquo;s tickets? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div><p>No. Each client is its own organisation, and clients only ever see their own tickets.</p></div>
+      </details>
+      <details>
+        <summary>Does it use business hours? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div><p>Yes. Each client has its own business hours, and SLA targets count business hours only.</p></div>
+      </details>
+      <details>
+        <summary>What counts as a user? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div><p>Every active user in your account: your team, suppliers and client contacts. Deactivated users aren&rsquo;t counted.</p></div>
+      </details>
+      <details>
+        <summary>Can suppliers be limited? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div><p>Yes. A supplier can be given access to just their own category.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark ks-dark" id="book-demo" aria-labelledby="demo-title">
   <div class="container split split--top">
     <div data-reveal>
-      <p class="eyebrow">Find out more</p>
-      <h2 id="interest-title">Interested in KrishaSure?</h2>
-      <p class="lead">KrishaSure is developed by Krisha Solutions. Get in touch to discuss how it could help your organisation manage support requests.</p>
+      {{> ks-lockup}}
+      <h2 id="demo-title">Book a 30-minute demo, or a pilot with two of your client organisations</h2>
+      <p class="lead">See how KrishaSure would work for your clients and your team.</p>
       <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="/contact/?service=krishasure">Ask About KrishaSure</a>
+        <a class="btn btn--accent btn--lg" href="{{ksDemoWhatsappUrl}}" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Book a demo on WhatsApp</a>
+        {{#email}}<a class="btn btn--ghost-light btn--lg" href="{{ksDemoEmailHref}}" data-track="email">Book by email</a>{{/email}}
       </div>
     </div>
-    <div class="feature-panel" data-reveal>
-      <p class="feature-panel__title">Related</p>
-      <ul class="feature-list">
-        <li><span class="feature-list__icon"><svg class="icon" aria-hidden="true"><use href="#i-support"/></svg></span><a href="/services/managed-it-services/">Managed IT services and technical support</a></li>
-        <li><span class="feature-list__icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><a href="/services/software-it-consulting/#software">Software implementation and customisation</a></li>
-        <li><span class="feature-list__icon"><svg class="icon" aria-hidden="true"><use href="#i-consult"/></svg></span><a href="/services/software-it-consulting/#consulting">IT consulting and project management</a></li>
+    <div class="ks-contact" data-reveal>
+      <p class="ks-contact__name">Khushboo Ruparel</p>
+      <p class="ks-contact__role">Founder, Krisha Solutions</p>
+      <ul class="footer-contact">
+        <li><a href="{{ksDemoWhatsappUrl}}" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp {{whatsappDisplay}}</a></li>
+        {{#email}}<li><a href="{{ksDemoEmailHref}}" data-track="email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{email}}</a></li>{{/email}}
+        <li><span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>{{location}}</span></li>
       </ul>
     </div>
   </div>
 </section>
-
-{{> cta-band}}

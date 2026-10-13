@@ -221,13 +221,59 @@ $headers = [
     'X-Mailer: krishasolutions.net',
 ];
 
-$sent = @mail(
-    (string) $config['to'],
-    encode_header($subject),
-    $body,
-    implode("\r\n", $headers),
-    '-f' . $from
-);
+/**
+ * Sends through Resend (https://resend.com) when an API key is configured.
+ * Resend signs the email for krishasolutions.net, so Microsoft 365 trusts it.
+ */
+function send_with_resend(array $config, string $subject, string $body, string $replyTo): bool
+{
+    if (!function_exists('curl_init')) {
+        error_log('contact.php: curl is not available for Resend');
+        return false;
+    }
+    $payload = json_encode([
+        'from' => header_safe((string) $config['siteName']) . ' Website <' . header_safe((string) $config['from']) . '>',
+        'to' => [(string) $config['to']],
+        'reply_to' => $replyTo,
+        'subject' => $subject,
+        'text' => $body,
+    ]);
+    $ch = curl_init('https://api.resend.com/emails');
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => $payload,
+        CURLOPT_HTTPHEADER => [
+            'Authorization: Bearer ' . $config['resendKey'],
+            'Content-Type: application/json',
+        ],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 15,
+    ]);
+    $response = curl_exec($ch);
+    $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $error = curl_error($ch);
+    curl_close($ch);
+    if ($status >= 200 && $status < 300) {
+        return true;
+    }
+    error_log('contact.php: Resend failed (HTTP ' . $status . ') ' . $error . ' ' . substr((string) $response, 0, 300));
+    return false;
+}
+
+$sent = false;
+if (!empty($config['resendKey'])) {
+    $sent = send_with_resend($config, $subject, $body, $data['email']);
+}
+if (!$sent) {
+    // Fallback: the hosting server's own mail system.
+    $sent = @mail(
+        (string) $config['to'],
+        encode_header($subject),
+        $body,
+        implode("\r\n", $headers),
+        '-f' . $from
+    );
+}
 
 if (!$sent) {
     respond(false, 500, 'Sorry, we could not send your message just now. Please try again later or contact us on WhatsApp.');

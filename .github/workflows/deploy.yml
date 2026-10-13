@@ -24,6 +24,8 @@ jobs:
 
       - name: Build site
         run: node build.mjs
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
 
       - name: Check site (links, SEO tags, structure)
         run: node scripts/check.mjs

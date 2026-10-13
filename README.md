@@ -123,6 +123,11 @@ To switch it on:
    Keep everything else in the existing record exactly as it is, and change only this one TXT record.
 3. Deploy, send a test enquiry, and confirm it arrives in the inbox (check Junk as well).
 
+**Sending through Resend (recommended).** If the GitHub secret `RESEND_API_KEY` is set, enquiries are
+sent through Resend (krishasolutions.net is verified there), which signs them so Microsoft 365 trusts
+them. If Resend can't be reached, the form falls back to the hosting server's mail. The key is only
+used at deploy time and is never stored in the repository.
+
 ## Deployment
 
 Every push to `main` builds the site, checks it, and uploads `dist/` to HostAfrica over FTPS

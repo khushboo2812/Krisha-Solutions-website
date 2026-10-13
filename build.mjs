@@ -373,6 +373,8 @@ const formConfig = {
   to: config.form.recipient,
   from: config.form.fromAddress,
   siteName: config.siteName,
+  // Secret: comes from the RESEND_API_KEY GitHub secret at deploy time, never from the repository.
+  resendKey: process.env.RESEND_API_KEY || '',
 };
 const phpString = (s) => `'${String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 await writeFile(
@@ -382,4 +384,5 @@ await writeFile(
     .join('\n')}\n];\n`,
 );
 
+if (formConfig.resendKey) console.log('Enquiry emails: sent via Resend');
 console.log(`Built ${pageFiles.length} pages into dist/ (contact form ${baseVars.formEnabled ? 'ON' : 'OFF'}, logo: ${logo ? logo.name : 'text wordmark'})`);

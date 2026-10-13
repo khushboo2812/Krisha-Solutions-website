@@ -17,7 +17,7 @@
     "enabled": false,
     "testPage": true,
     "recipient": "khushboo@krishasolutions.net",
-    "fromAddress": "website@krishasolutions.net"
+    "fromAddress": "website@web.krishasolutions.net"
   },
   "analytics": {
     "ga4Id": "",

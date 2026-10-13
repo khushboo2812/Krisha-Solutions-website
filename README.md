@@ -123,7 +123,12 @@ To switch it on:
    Keep everything else in the existing record exactly as it is, and change only this one TXT record.
 3. Deploy, send a test enquiry, and confirm it arrives in the inbox (check Junk as well).
 
-**Sending through Resend (recommended).** If the GitHub secret `RESEND_API_KEY` is set, enquiries are
+**Sender address.** Enquiries are sent from `website@web.krishasolutions.net`, not from the main
+domain: Microsoft 365 quarantines mail that claims to be from your own domain but comes from an
+outside server, and it cannot be allow-listed. The subdomain has its own SPF record in GoDaddy DNS
+(TXT, name `web`, value `v=spf1 ip4:102.68.98.222 -all`), which passes SPF and DMARC.
+
+**Sending through Resend (optional).** If the GitHub secret `RESEND_API_KEY` is set, enquiries are
 sent through Resend (krishasolutions.net is verified there), which signs them so Microsoft 365 trusts
 them. If Resend can't be reached, the form falls back to the hosting server's mail. The key is only
 used at deploy time and is never stored in the repository.

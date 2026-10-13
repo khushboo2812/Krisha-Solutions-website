@@ -6,7 +6,7 @@
     "whatsappNumber": "254181846711",
     "whatsappDisplay": "+254 181 846711",
     "whatsappMessage": "Hello Krisha Solutions, I would like to discuss our IT needs.",
-    "email": "",
+    "email": "khushboo@krishasolutions.net",
     "phone": "",
     "phoneDisplay": "",
     "locality": "Nairobi",
@@ -15,7 +15,7 @@
   },
   "form": {
     "enabled": false,
-    "recipient": "",
+    "recipient": "khushboo@krishasolutions.net",
     "fromAddress": "website@krishasolutions.net"
   },
   "analytics": {

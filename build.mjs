@@ -71,6 +71,18 @@ async function findLogo() {
 
 function imageSize(buffer, name) {
   if (name.endsWith('.png')) return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
+  if (name.endsWith('.jpg')) {
+    // Find the JPEG "start of frame" marker, which holds the image size.
+    let i = 2;
+    while (i < buffer.length) {
+      const marker = buffer[i + 1];
+      const length = buffer.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+        return { width: buffer.readUInt16BE(i + 7), height: buffer.readUInt16BE(i + 5) };
+      }
+      i += 2 + length;
+    }
+  }
   if (name.endsWith('.svg')) {
     const viewBox = buffer.toString('utf8').match(/viewBox="[\d.\s-]*?\s([\d.]+)\s+([\d.]+)"/);
     if (viewBox) return { width: Math.round(viewBox[1]), height: Math.round(viewBox[2]) };

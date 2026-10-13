@@ -56,8 +56,9 @@ try {
       const problems = [];
       page.on('pageerror', (e) => problems.push(`script error: ${e.message}`));
       page.on('console', (m) => { if (m.type() === 'error' && !/instagram|ERR_TUNNEL|ERR_CONNECTION/i.test(m.text() + (m.location().url || ''))) problems.push(`console: ${m.text()}`); });
-      // Instagram embeds can't be reached from every test environment, so they are not counted.
-      page.on('requestfailed', (r) => { if (!/instagram\.com|cdninstagram|facebook/.test(r.url())) problems.push(`request failed: ${r.url()}`); });
+      // Instagram embeds and Google's tag can't be reached from every test environment, so they are not counted.
+      const external = /instagram\.com|cdninstagram|facebook|googletagmanager\.com|google-analytics\.com|googleadservices\.com|doubleclick\.net/;
+      page.on('requestfailed', (r) => { if (!external.test(r.url())) problems.push(`request failed: ${r.url()}`); });
       page.on('response', (r) => { if (r.status() >= 400 && r.url().startsWith(BASE) && !r.url().endsWith('/404.html')) problems.push(`HTTP ${r.status()}: ${r.url()}`); });
 
       await page.goto(BASE + path, { waitUntil: 'networkidle' });

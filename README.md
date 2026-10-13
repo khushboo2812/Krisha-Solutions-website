@@ -113,11 +113,13 @@ and sends the enquiry by email using the hosting's PHP mail function.
 
 To switch it on:
 
-1. Set `form.recipient` to the inbox that should receive enquiries and `form.enabled` to `true`.
+1. Set `form.recipient` to the inbox that should receive enquiries. With `form.testPage` set to `true`,
+   the form appears only on the private page `/contact/form-test/` so delivery can be tested;
+   set `form.enabled` to `true` to show it on `/contact/` (and remove `testPage` afterwards).
 2. So that Microsoft 365 trusts emails sent by the website, add the HostAfrica server to the domain's
    SPF record in GoDaddy DNS: edit the TXT record that starts with `v=spf1` and add `ip4:102.68.98.222`
-   to it. For example, if the record is `v=spf1 include:spf.protection.outlook.com -all`, change it to
-   `v=spf1 ip4:102.68.98.222 include:spf.protection.outlook.com -all`.
+   to it. The record was `v=spf1 include:secureserver.net -all`; with the server added it reads
+   `v=spf1 ip4:102.68.98.222 include:secureserver.net -all`.
    Keep everything else in the existing record exactly as it is, and change only this one TXT record.
 3. Deploy, send a test enquiry, and confirm it arrives in the inbox (check Junk as well).
 

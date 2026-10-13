@@ -100,6 +100,11 @@ WhatsApp or SMS alerts, Microsoft / Office 365 sign-in, bulk user import, intern
 built-in ERP integration, per-client reports in the dashboard, a mobile app, or any uptime,
 security or certification promise. Don't name customers or name the AI provider ("an AI assistant").
 
+## Team photos
+
+The founder section on the About page uses `src/static/assets/img/team/khushboo.*`
+(webp, jpg or png; a portrait photo, cropped to 4:5). Until it exists, the initials "KR" are shown.
+
 ## Enquiry form
 
 The form posts to `/api/contact.php`, which validates it, applies spam protection

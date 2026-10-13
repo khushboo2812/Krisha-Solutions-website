@@ -3,7 +3,13 @@
   "title": "About Krisha Solutions | IT Services Company in Nairobi, Kenya",
   "description": "Krisha Solutions is a Nairobi-based IT services and consulting business helping organisations in Kenya manage, maintain and improve their technology.",
   "breadcrumb": [["About Us", "/about/"]],
-  "organisationSchema": true
+  "organisationSchema": true,
+  "schema": {
+    "@type": "Person",
+    "name": "Khushboo Ruparel",
+    "jobTitle": "Founder and Director",
+    "worksFor": { "@id": "https://krishasolutions.net/#organization" }
+  }
 }
 ---
 <section class="page-hero">
@@ -29,7 +35,36 @@
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="values-title">
+<section class="section section--alt" id="team" aria-labelledby="founder-title">
+  <div class="container">
+    <article class="founder" data-reveal>
+      <div class="founder__photo">
+        {{#teamPhotos.khushboo}}<img src="{{teamPhotos.khushboo}}" alt="Khushboo Ruparel, Founder and Director of Krisha Solutions" loading="lazy">{{/teamPhotos.khushboo}}
+        {{^teamPhotos.khushboo}}<span class="founder__initials" aria-hidden="true">KR</span>{{/teamPhotos.khushboo}}
+      </div>
+      <div class="founder__body">
+        <p class="eyebrow">Meet the founder</p>
+        <h2 id="founder-title">Khushboo Ruparel</h2>
+        <p class="founder__role">Founder and Director, Krisha Solutions</p>
+        <p>Khushboo Ruparel is the Founder and Director of Krisha Solutions, bringing nearly a decade of experience in the IT industry and a passion for helping businesses make technology work for them.</p>
+        <p>With a B.Sc. in Computing and experience across IT operations, software solutions and technology implementation, Khushboo founded Krisha Solutions to provide businesses with practical, reliable and cost-effective IT support tailored to their needs.</p>
+        <p>Her approach combines technical understanding with a business-focused mindset, helping organisations manage their IT infrastructure, implement technology solutions and navigate their IT challenges with confidence.</p>
+        <p>Through Krisha Solutions, Khushboo is building a trusted technology partner for businesses that need dependable IT expertise without the complexity of managing everything themselves.</p>
+        <blockquote class="founder__vision">
+          <p class="founder__vision-label">Her vision</p>
+          <p>To make reliable, effective IT solutions accessible to businesses of all sizes, helping them work smarter, operate efficiently and grow with confidence.</p>
+        </blockquote>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href="{{whatsappChatUrl}}" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Message Khushboo</a>
+          {{#email}}<a class="btn btn--outline" href="{{emailHref}}" data-track="email">Email Khushboo</a>{{/email}}
+        </div>
+      </div>
+    </article>
+    <!-- Team members: add a team section here when their details and photos arrive. -->
+  </div>
+</section>
+
+<section class="section" aria-labelledby="values-title">
   <div class="container">
     <div class="section-head" data-reveal>
       <p class="eyebrow">How we work</p>
@@ -60,7 +95,7 @@
   </div>
 </section>
 
-<section class="section" aria-labelledby="services-title">
+<section class="section section--alt" aria-labelledby="services-title">
   <div class="container split split--top">
     <div data-reveal>
       <p class="eyebrow">What we do</p>
@@ -84,7 +119,7 @@
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="clients-title">
+<section class="section" aria-labelledby="clients-title">
   <div class="container split split--top">
     <div data-reveal>
       <p class="eyebrow">Who we work with</p>
@@ -105,7 +140,7 @@
   </div>
 </section>
 
-<section class="section" aria-labelledby="honest-title">
+<section class="section section--alt" aria-labelledby="honest-title">
   <div class="container">
     <div class="callout callout--plain" data-reveal>
       <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>

@@ -249,7 +249,7 @@ const KS_DIR = join(SRC, 'static/assets/img/krishasure');
 async function findImage(dir, base) {
   for (const ext of ['svg', 'png', 'webp', 'jpg']) {
     const file = join(dir, `${base}.${ext}`);
-    if (await exists(file)) return `/assets/img/krishasure/${base}.${ext}`;
+    if (await exists(file)) return `/${relative(join(SRC, 'static'), file).split(sep).join('/')}`;
   }
   return '';
 }
@@ -257,6 +257,10 @@ const ksLogo = await findImage(KS_DIR, 'logo');
 const ksNavLogo = await findImage(KS_DIR, 'logo-nav');
 const ksShots = {};
 for (const name of ['dashboard', 'ai_assistant', 'client_portal']) ksShots[name] = await findImage(KS_DIR, name);
+
+// Team photos: src/static/assets/img/team/<first name>.(webp|jpg|png)
+const teamPhotos = {};
+for (const name of ['khushboo']) teamPhotos[name] = await findImage(join(SRC, 'static/assets/img/team'), name);
 
 const baseVars = {
   siteName: config.siteName,
@@ -285,6 +289,7 @@ const baseVars = {
   brandMark,
   ksLogo,
   ksNavLogo,
+  teamPhotos,
   ksShots,
   ksDemoWhatsappUrl: `${whatsappUrl}?text=${encodeURIComponent('Hello Khushboo, I would like to book a KrishaSure demo.')}`,
   ksDemoEmailHref: contact.email ? `mailto:${contact.email}?subject=${encodeURIComponent('KrishaSure demo')}` : '',

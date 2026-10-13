@@ -1050,6 +1050,17 @@ body.nav-open .wa-float { display: none; }
   .service-row .link-arrow { align-self: start; }
 }
 
+.reel { justify-self: center; width: 100%; max-width: 400px; }
+.reel iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 400 / 720;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
 @media print {
   .site-header, .wa-float, .cta-band, .site-footer { display: none; }
 }

@@ -2,6 +2,7 @@
    Brand colours are taken from the Krisha Solutions logo. */
 
 :root {
+  color-scheme: only light;
   --indigo-950: #0f0b3a;
   --indigo-900: #1a1259;
   --indigo-800: #231872;

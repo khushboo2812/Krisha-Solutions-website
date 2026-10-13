@@ -84,6 +84,14 @@ try {
     check(!(await nav.isVisible()), 'phone: menu is closed initially');
     await page.click('[data-nav-toggle]');
     check(await nav.isVisible(), 'phone: menu opens from the menu button');
+    const navBox = await nav.boundingBox();
+    check(navBox && navBox.height > 500, `phone: open menu fills the screen (${navBox ? Math.round(navBox.height) : 0}px tall)`);
+    const navCta = page.locator('#site-nav .nav-cta');
+    const ctaBox = await navCta.boundingBox();
+    check(await navCta.isVisible() && ctaBox && ctaBox.y + ctaBox.height < 812, 'phone: all menu items are on screen without scrolling');
+    await page.click('[aria-controls="nav-products"]');
+    check(await page.locator('#nav-products a[href="/krishasure/"]').isVisible(), 'phone: products submenu expands');
+    await page.click('[aria-controls="nav-products"]');
     await page.click('[data-sub-toggle]');
     check(await page.locator('#nav-services a[href="/services/cloud-hosting-backup/"]').isVisible(), 'phone: services submenu expands');
     if (SHOTS) await page.screenshot({ path: join(SHOTS, 'phone-menu-open.png') });
@@ -102,6 +110,14 @@ try {
     await dpage.hover('[data-sub-toggle]');
     await dpage.waitForTimeout(300);
     check(await dpage.locator('#nav-services').isVisible(), 'desktop: services dropdown opens on hover');
+    await dpage.mouse.move(0, 400);
+    await dpage.hover('[aria-controls="nav-products"]');
+    await dpage.waitForTimeout(300);
+    check(await dpage.locator('#nav-products a[href="/krishasure/"]').isVisible(), 'desktop: products dropdown opens on hover');
+    await dpage.mouse.move(0, 400);
+    await dpage.waitForTimeout(300);
+    await dpage.hover('[aria-controls="nav-services"]');
+    await dpage.waitForTimeout(300);
     if (SHOTS) await dpage.screenshot({ path: join(SHOTS, 'desktop-dropdown-open.png') });
     check(
       (await dpage.locator('#nav-services a[href="/services/managed-it-services/"]').getAttribute('aria-current')) === 'page',

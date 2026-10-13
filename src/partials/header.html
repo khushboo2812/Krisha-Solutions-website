@@ -27,7 +27,26 @@
             <a class="nav-sub__all" href="/services/" data-nav-link>View all services <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="/krishasure/" data-nav-link>KrishaSure</a></li>
+        <li class="nav-item has-sub {{productsActive}}" data-sub>
+          <button class="nav-link nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-products" data-sub-toggle>
+            Products <svg class="icon icon--sm" aria-hidden="true"><use href="#i-chevron"/></svg>
+          </button>
+          <div class="nav-sub nav-sub--products" id="nav-products">
+            <p class="nav-sub__label">Our products</p>
+            <a class="nav-product" href="/krishasure/" data-nav-link>
+              {{#ksNavLogo}}<img class="nav-product__logo" src="{{ksNavLogo}}" alt="" width="176" height="121" loading="lazy">{{/ksNavLogo}}
+              <span class="nav-product__body">
+                <strong class="nav-product__name">KrishaSure</strong>
+                <span class="nav-product__desc">Support ticketing for MSPs and IT teams: AI-assisted tickets, SLA tracking and one dashboard for every client.</span>
+                <span class="nav-product__powered">Powered by Krisha Solutions</span>
+              </span>
+            </a>
+            <div class="nav-product__links">
+              <a href="/krishasure/#pricing">See pricing</a>
+              <a href="/krishasure/#book-demo">Book a demo <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </li>
         <li class="nav-item"><a class="nav-link" href="/about/" data-nav-link>About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="/contact/" data-nav-link>Contact</a></li>
       </ul>

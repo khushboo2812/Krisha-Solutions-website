@@ -254,6 +254,7 @@ async function findImage(dir, base) {
   return '';
 }
 const ksLogo = await findImage(KS_DIR, 'logo');
+const ksNavLogo = await findImage(KS_DIR, 'logo-nav');
 const ksShots = {};
 for (const name of ['dashboard', 'ai_assistant', 'client_portal']) ksShots[name] = await findImage(KS_DIR, name);
 
@@ -283,6 +284,7 @@ const baseVars = {
   logoUrl,
   brandMark,
   ksLogo,
+  ksNavLogo,
   ksShots,
   ksDemoWhatsappUrl: `${whatsappUrl}?text=${encodeURIComponent('Hello Khushboo, I would like to book a KrishaSure demo.')}`,
   ksDemoEmailHref: contact.email ? `mailto:${contact.email}?subject=${encodeURIComponent('KrishaSure demo')}` : '',
@@ -319,6 +321,7 @@ for (const file of pageFiles) {
     bodyData: meta.conversion ? 'data-conversion="lead"' : '',
     breadcrumbHtml: crumbs ? breadcrumbHtml(crumbs) : '',
     servicesActive: path.startsWith('/services/') ? 'is-active' : '',
+    productsActive: path.startsWith('/krishasure/') ? 'is-active' : '',
     schemaJson: schemas
       .map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, '\\u003c')}</script>`)
       .join('\n  '),

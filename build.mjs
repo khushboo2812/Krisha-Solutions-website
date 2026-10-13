@@ -236,7 +236,8 @@ let logoUrl = '';
 let brandMark;
 if (logo) {
   const size = imageSize(await readFile(logo.file), logo.name);
-  logoUrl = `/assets/img/${logo.name}`;
+  // The version suffix changes whenever the file does, so browsers never show a stale cached logo.
+  logoUrl = `/assets/img/${logo.name}?v=${await fileHash(logo.file)}`;
   const dims = size ? ` width="${size.width}" height="${size.height}"` : '';
   brandMark = `<img class="brand__logo" src="${logoUrl}" alt="${escapeHtml(config.siteName)}"${dims}>`;
 } else {
@@ -251,7 +252,7 @@ const KS_DIR = join(SRC, 'static/assets/img/krishasure');
 async function findImage(dir, base) {
   for (const ext of ['svg', 'png', 'webp', 'jpg']) {
     const file = join(dir, `${base}.${ext}`);
-    if (await exists(file)) return `/${relative(join(SRC, 'static'), file).split(sep).join('/')}`;
+    if (await exists(file)) return `/${relative(join(SRC, 'static'), file).split(sep).join('/')}?v=${await fileHash(file)}`;
   }
   return '';
 }

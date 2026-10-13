@@ -263,6 +263,7 @@ const baseVars = {
   analyticsHead: analyticsHead(),
   analyticsConfig: JSON.stringify({
     adsId: analytics.googleAdsId || '',
+    contactLabel: analytics.adsContactConversionLabel || '',
     leadLabel: analytics.adsLeadConversionLabel || '',
   }),
   logoUrl,

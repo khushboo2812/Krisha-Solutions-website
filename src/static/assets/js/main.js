@@ -111,6 +111,10 @@
       link_url: link.href,
       page_path: location.pathname,
     });
+    // Google Ads conversion for WhatsApp, email and phone clicks.
+    if (analytics.adsId && analytics.contactLabel) {
+      track('conversion', { send_to: analytics.adsId + '/' + analytics.contactLabel });
+    }
   });
 
   // ---------- Lead conversion on the thank-you page ----------

@@ -70,7 +70,8 @@ Contact details come from `site.config.json`, so they only need changing in one 
 | `form.fromAddress` | Sender address used for enquiry emails |
 | `analytics.ga4Id` | Google Analytics 4 measurement ID (`G-...`) |
 | `analytics.googleAdsId` | Google Ads tag ID (`AW-...`) |
-| `analytics.adsLeadConversionLabel` | Google Ads conversion label for enquiries |
+| `analytics.adsContactConversionLabel` | Google Ads conversion label for WhatsApp, email and phone clicks |
+| `analytics.adsLeadConversionLabel` | Google Ads conversion label for enquiry form submissions |
 
 Analytics code is only added to the site when an ID is filled in.
 

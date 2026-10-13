@@ -35,7 +35,7 @@
   --shadow-lg: 0 24px 60px -20px rgba(15, 11, 58, 0.35);
   --container: 1180px;
   --gutter: clamp(16px, 4vw, 32px);
-  --header-h: 76px;
+  --header-h: 88px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -206,7 +206,7 @@ main:focus { outline: none; }
 }
 
 .brand { display: inline-flex; align-items: center; text-decoration: none; flex: none; }
-.brand__logo { height: 50px; width: auto; }
+.brand__logo { height: 68px; width: auto; }
 
 .wordmark { display: inline-flex; align-items: center; gap: 0.55rem; }
 .wordmark__mark { width: 30px; height: 39px; }
@@ -913,7 +913,7 @@ html:not(.js) .nav-item:focus-within > .nav-sub {
   border-radius: 12px;
   text-decoration: none;
 }
-.footer-logo .brand__logo { height: 44px; }
+.footer-logo .brand__logo { height: 64px; }
 .footer-tagline { color: #fff; font-weight: 700; }
 .footer-brand p { max-width: 22rem; }
 .footer-title { margin-bottom: 1rem; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
@@ -988,8 +988,8 @@ body.nav-open .wa-float { display: none; }
 
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  :root { --header-h: 68px; }
-  .brand__logo { height: 42px; }
+  :root { --header-h: 72px; }
+  .brand__logo { height: 52px; }
   .wordmark__name { font-size: 1.5rem; }
   .grid--2, .grid--3, .grid--4, .problem-grid, .related, .steps, .steps--5, .form-grid, .footer-grid { grid-template-columns: 1fr; }
   .hero .check-list { grid-template-columns: 1fr; }

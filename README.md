@@ -123,10 +123,13 @@ To switch it on:
    Keep everything else in the existing record exactly as it is, and change only this one TXT record.
 3. Deploy, send a test enquiry, and confirm it arrives in the inbox (check Junk as well).
 
-**Sender address.** Enquiries are sent from `website@web.krishasolutions.net`, not from the main
-domain: Microsoft 365 quarantines mail that claims to be from your own domain but comes from an
-outside server, and it cannot be allow-listed. The subdomain has its own SPF record in GoDaddy DNS
-(TXT, name `web`, value `v=spf1 ip4:102.68.98.222 -all`), which passes SPF and DMARC.
+**How delivery works (set up October 2026).** HostAfrica relays outgoing mail through MailChannels
+and signs it with DKIM (selector `x`). The public key is published in GoDaddy DNS as a TXT record
+named `x._domainkey`; that signature is what lets Microsoft 365 accept the email (DMARC pass).
+If HostAfrica ever changes the key, copy the new `x._domainkey` value from DirectAdmin's
+DNS Management into GoDaddy. Enquiries are sent from `website@web.krishasolutions.net`
+(Microsoft won't allow-list your own domain sent from outside), and that sender is in the
+mailbox's Safe Senders list. Bounce notices go to the recipient inbox.
 
 **Sending through Resend (optional).** If the GitHub secret `RESEND_API_KEY` is set, enquiries are
 sent through Resend (krishasolutions.net is verified there), which signs them so Microsoft 365 trusts

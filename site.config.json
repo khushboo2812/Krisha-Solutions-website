@@ -14,8 +14,7 @@
     "countryCode": "KE"
   },
   "form": {
-    "enabled": false,
-    "testPage": true,
+    "enabled": true,
     "recipient": "khushboo@krishasolutions.net",
     "fromAddress": "website@web.krishasolutions.net"
   },

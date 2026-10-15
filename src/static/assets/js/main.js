@@ -10,6 +10,19 @@
     if (typeof window.gtag === 'function') window.gtag('event', eventName, params || {});
   }
 
+  // ---------- Time-limited offer ----------
+  // Elements with data-offer-ends="YYYY-MM-DD" disappear after that day (Nairobi time);
+  // [data-offer-ended] notices appear in their place.
+  var offerEls = doc.querySelectorAll('[data-offer-ends]');
+  for (var o = 0; o < offerEls.length; o++) {
+    var ends = new Date(offerEls[o].getAttribute('data-offer-ends') + 'T23:59:59+03:00');
+    if (!isNaN(ends) && Date.now() > ends.getTime()) {
+      offerEls[o].hidden = true;
+      offerEls[o].setAttribute('data-offer-over', '');
+      doc.querySelectorAll('[data-offer-ended]').forEach(function (el) { el.hidden = false; });
+    }
+  }
+
   // ---------- Header shadow on scroll ----------
   var header = doc.querySelector('[data-header]');
   if (header) {
@@ -140,8 +153,8 @@
   // Pre-select a service from the link, e.g. /contact/?service=krishasure
   var params = new URLSearchParams(location.search);
   var serviceSelect = form.elements.service;
-  if (params.get('service') && serviceSelect) {
-    var wanted = params.get('service');
+  var wanted = params.get('service') || form.getAttribute('data-default-service');
+  if (wanted && serviceSelect) {
     for (var i = 0; i < serviceSelect.options.length; i++) {
       if (serviceSelect.options[i].value === wanted) serviceSelect.value = wanted;
     }

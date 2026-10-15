@@ -34,6 +34,7 @@ scripts/
 | `/services/website-ecommerce-development/` | Website and E-commerce Development |
 | `/services/it-hardware-equipment/` | IT Hardware and Equipment |
 | `/krishasure/` | KrishaSure helpdesk product |
+| `/free-it-assessment/` | Free IT infrastructure assessment offer (Google Ads landing page) |
 | `/about/` | About Us |
 | `/contact/` | Contact Us and enquiry form |
 | `/contact/thank-you/` | Shown after an enquiry is sent (not indexed by search engines) |
@@ -73,7 +74,14 @@ Contact details come from `site.config.json`, so they only need changing in one 
 | `analytics.adsContactConversionLabel` | Google Ads conversion label for WhatsApp, email and phone clicks |
 | `analytics.adsLeadConversionLabel` | Google Ads conversion label for enquiry form submissions |
 
+| `offer.enabled` / `endsOn` / `endsLabel` | The free IT assessment offer: banner on every page, footer link and booking section on `/free-it-assessment/` |
+
 Analytics code is only added to the site when an ID is filled in.
+
+The offer switches itself off after `offer.endsOn` (end of that day, Nairobi time): visitors' browsers
+hide the banner and booking form and show an "offer has ended" note, even without a new deploy.
+After the next deploy the page also drops out of the sitemap and is marked noindex.
+To run a new offer, set a new `endsOn` and `endsLabel`.
 
 ## Logo
 

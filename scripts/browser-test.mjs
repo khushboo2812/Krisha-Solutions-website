@@ -26,7 +26,7 @@ const PAGES = [
   '/', '/services/', '/services/managed-it-services/', '/services/it-infrastructure-networking/',
   '/services/cloud-hosting-backup/', '/services/software-it-consulting/',
   '/services/website-ecommerce-development/', '/services/it-hardware-equipment/',
-  '/krishasure/', '/about/', '/contact/', '/contact/thank-you/', '/privacy-policy/', '/404.html',
+  '/krishasure/', '/free-it-assessment/', '/about/', '/contact/', '/contact/thank-you/', '/privacy-policy/', '/404.html',
 ];
 if (existsSync(join(DIST, 'contact/form-test/index.html'))) PAGES.push('/contact/form-test/');
 const VIEWPORTS = { phone: { width: 375, height: 812 }, desktop: { width: 1366, height: 900 } };

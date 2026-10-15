@@ -23,5 +23,10 @@
     "googleAdsId": "AW-18510433317",
     "adsContactConversionLabel": "wrXZCMvgzpsdEKWYu_pE",
     "adsLeadConversionLabel": "U-xtCI765psdEKWYu_pE"
+  },
+  "offer": {
+    "enabled": true,
+    "endsOn": "2026-10-31",
+    "endsLabel": "31 October 2026"
   }
 }

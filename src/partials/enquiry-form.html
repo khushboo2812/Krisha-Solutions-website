@@ -1,5 +1,5 @@
 {{#formEnabled}}
-<form class="enquiry-form" action="/api/contact.php" method="post" data-enquiry-form data-whatsapp="{{whatsappChatUrl}}">
+<form class="enquiry-form" action="/api/contact.php" method="post" data-enquiry-form data-whatsapp="{{whatsappChatUrl}}"{{#defaultService}} data-default-service="{{defaultService}}"{{/defaultService}}>
   <div class="form-status" role="alert" aria-live="assertive" data-form-status hidden></div>
 
   <div class="form-grid">
@@ -53,6 +53,7 @@
       <label for="f-service">Service required <span class="req" aria-hidden="true">*</span></label>
       <select id="f-service" name="service" required aria-describedby="f-service-error">
         <option value="">Select a service</option>
+        <option value="assessment">Free IT infrastructure assessment</option>
         <option value="managed-it">Managed IT services and technical support</option>
         <option value="infrastructure">IT infrastructure and networking</option>
         <option value="cloud">Cloud services, hosting and backup</option>

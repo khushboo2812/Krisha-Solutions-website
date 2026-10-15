@@ -265,6 +265,11 @@ for (const name of ['dashboard', 'ai_assistant', 'client_portal']) ksShots[name]
 const teamPhotos = {};
 for (const name of ['khushboo']) teamPhotos[name] = await findImage(join(SRC, 'static/assets/img/team'), name);
 
+// Free IT assessment offer: shown until offer.endsOn (inclusive, Nairobi time).
+// The browser hides it after that date too, so it switches off without a rebuild.
+const offer = config.offer || {};
+const offerActive = Boolean(offer.enabled && offer.endsOn && today <= offer.endsOn);
+
 const baseVars = {
   siteName: config.siteName,
   siteUrl: config.siteUrl,
@@ -299,6 +304,10 @@ const baseVars = {
   ksDemoWhatsappUrl: `${whatsappUrl}?text=${encodeURIComponent('Hello Khushboo, I would like to book a KrishaSure demo.')}`,
   ksDemoEmailHref: contact.email ? `mailto:${contact.email}?subject=${encodeURIComponent('KrishaSure demo')}` : '',
   lastUpdated: today,
+  offerActive,
+  offerEndsOn: offer.endsOn || '',
+  offerEndsLabel: offer.endsLabel || '',
+  whatsappAssessmentUrl: `${whatsappUrl}?text=${encodeURIComponent('Hello Krisha Solutions, I would like to book a free IT infrastructure assessment.')}`,
 };
 
 const pageFiles = (await walk(join(SRC, 'pages')))
@@ -329,9 +338,11 @@ for (const file of pageFiles) {
     canonical,
     pageTitle: meta.title,
     pageDescription: meta.description,
-    robots: meta.noindex ? 'noindex, nofollow' : 'index, follow',
+    robots: meta.noindex || (meta.offerPage && !offerActive) ? 'noindex, nofollow' : 'index, follow',
     formEnabled: meta.forceForm ? baseVars.formTestPage : baseVars.formEnabled,
     bodyClass: meta.bodyClass || '',
+    defaultService: meta.defaultService || '',
+    offerBanner: offerActive && !meta.offerPage,
     bodyData: meta.conversion ? 'data-conversion="lead"' : '',
     breadcrumbHtml: crumbs ? breadcrumbHtml(crumbs) : '',
     servicesActive: path.startsWith('/services/') ? 'is-active' : '',
@@ -351,7 +362,7 @@ for (const file of pageFiles) {
   await mkdir(dirname(outFile), { recursive: true });
   await writeFile(outFile, html);
 
-  if (!meta.noindex) sitemapUrls.push({ loc: canonical, priority: meta.priority ?? (path === '/' ? '1.0' : '0.8') });
+  if (!meta.noindex && !(meta.offerPage && !offerActive)) sitemapUrls.push({ loc: canonical, priority: meta.priority ?? (path === '/' ? '1.0' : '0.8') });
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

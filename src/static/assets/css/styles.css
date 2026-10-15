@@ -1284,3 +1284,24 @@ ul.ks-flow li::after { display: none !important; }
   .founder { grid-template-columns: 1fr; }
   .founder__photo { position: static; max-width: 260px; }
 }
+
+/* ---------- Free IT assessment offer ---------- */
+
+[hidden] { display: none !important; }
+
+.offer-bar { background: linear-gradient(90deg, var(--cyan-700), var(--indigo-700)); color: #fff; font-size: 0.93rem; }
+.offer-bar__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem 1rem; padding-block: 0.55rem; text-align: center; }
+.offer-bar p { margin: 0; }
+.offer-bar a { display: inline-flex; align-items: center; gap: 0.35rem; color: #fff; font-weight: 700; white-space: nowrap; }
+.offer-bar a:hover { color: var(--sky-200); }
+.offer-bar .icon { width: 1rem; height: 1rem; }
+@media (max-width: 640px) { .offer-bar__extra { display: none; } .offer-bar { font-size: 0.88rem; } }
+
+.offer-hero__question { margin: -0.25rem 0 1rem; font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem); font-weight: 700; color: var(--sky-200); max-width: 32em; }
+.offer-points { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; color: #e4e6f7; font-weight: 600; }
+.offer-points li { display: inline-flex; align-items: center; gap: 0.5rem; }
+.offer-points .icon { width: 1.25rem; height: 1.25rem; color: var(--cyan-500); }
+.offer-ended { margin-top: 1.5rem; max-width: 44rem; padding: 1.25rem 1.5rem; border-radius: var(--radius); background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.2); }
+.offer-ended strong { color: #fff; }
+.offer-ended .btn-row { margin-top: 1rem; }
+#book .contact-aside .faq { margin-top: 2rem; }

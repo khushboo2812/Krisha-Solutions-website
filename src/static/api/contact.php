@@ -15,7 +15,6 @@ declare(strict_types=1);
 $config = require __DIR__ . '/contact-config.php';
 
 const SERVICES = [
-    'assessment' => 'Free IT infrastructure assessment',
     'managed-it' => 'Managed IT services and technical support',
     'infrastructure' => 'IT infrastructure and networking',
     'cloud' => 'Cloud services, hosting and backup',

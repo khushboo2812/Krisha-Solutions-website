@@ -18,6 +18,10 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteCond %{HTTP_HOST} ^krishasolutions\.net$ [NC]
   RewriteRule ^ https://krishasolutions.net%{REQUEST_URI} [L,R=301]
+
+  # The free IT assessment offer ended on 31 October 2026; old ad links and
+  # bookmarks go to the IT infrastructure service page.
+  RewriteRule ^free-it-assessment/?$ /services/it-infrastructure-networking/ [L,R=301]
 </IfModule>
 
 # Keep the deployment record private.
